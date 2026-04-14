@@ -2,10 +2,8 @@ import matplotlib.pyplot as plt
 from preprocess import load_data, normalize_data
 from model import build_model
 
-
 train_data, val_data, test_data = load_data()
 train_data, val_data, test_data = normalize_data(train_data, val_data, test_data)
-
 
 model = build_model()
 
@@ -17,11 +15,9 @@ history = model.fit(
     epochs=EPOCHS
 )
 
-
 model.save("models/medical_model.h5")
 
-print("✅ Model saved successfully!")
-
+print("Model saved successfully!")
 
 acc = history.history['accuracy']
 val_acc = history.history['val_accuracy']
