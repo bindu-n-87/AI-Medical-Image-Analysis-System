@@ -4,15 +4,9 @@ import cv2
 from tensorflow.keras.models import load_model
 from PIL import Image
 
-# ===============================
-# CONFIG
-# ===============================
 IMG_SIZE = 224
 classes = ["Normal", "Pneumonia"]
 
-# ===============================
-# LOAD MODEL (CACHED)
-# ===============================
 @st.cache_resource
 def load_my_model():
     model = load_model("models/medical_model.h5")
@@ -20,9 +14,6 @@ def load_my_model():
 
 model = load_my_model()
 
-# ===============================
-# PREPROCESS IMAGE
-# ===============================
 def preprocess_image(image):
     image = np.array(image)
 
@@ -35,9 +26,6 @@ def preprocess_image(image):
 
     return image
 
-# ===============================
-# PREDICTION FUNCTION
-# ===============================
 def predict(image):
     processed = preprocess_image(image)
 
@@ -48,9 +36,6 @@ def predict(image):
 
     return classes[class_idx], confidence
 
-# ===============================
-# STREAMLIT UI
-# ===============================
 st.set_page_config(page_title="AI Medical Scanner", layout="centered")
 
 st.title("AI-Powered Medical Image Analysis")
