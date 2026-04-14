@@ -34,7 +34,6 @@ def load_data():
 
     return train_data, val_data, test_data
 
-
 def normalize_data(train, val, test):
     normalization_layer = tf.keras.layers.Rescaling(1./255)
 
